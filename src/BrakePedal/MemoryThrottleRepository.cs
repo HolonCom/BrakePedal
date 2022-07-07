@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace BrakePedal
 {
-    public class MemoryThrottleRepository : IThrottleRepository
+    public class MemoryThrottleRepository : IThrottleRepository, IDisposable
     {
         private readonly IMemoryCache _store;
 
@@ -138,6 +138,11 @@ namespace BrakePedal
         {
             TimeSpan timeSpan = (CurrentDate() - new DateTime(1970, 1, 1, 0, 0, 0));
             return (long)timeSpan.TotalSeconds;
+        }
+
+        public void Dispose()
+        {
+            _store.Dispose();
         }
 
         [Serializable]
