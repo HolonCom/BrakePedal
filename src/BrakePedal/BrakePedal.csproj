@@ -1,12 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.0;net6;net7</TargetFrameworks>
         <PackageVersion>2.0.0</PackageVersion>
     </PropertyGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+        <PackageReference Include="System.Runtime.Caching" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.0" />
     </ItemGroup>
 
 </Project>
