@@ -25,39 +25,39 @@ namespace BrakePedal
 
         public long? PerSecond
         {
-            get { return GetLimiterCount(TimeSpan.FromSeconds(1)); }
-            set { SetLimiter(TimeSpan.FromSeconds(1), value); }
+            get => GetLimiterCount(TimeSpan.FromSeconds(1));
+            set => SetLimiter(TimeSpan.FromSeconds(1), value);
         }
 
         public long? PerMinute
         {
-            get { return GetLimiterCount(TimeSpan.FromMinutes(1)); }
-            set { SetLimiter(TimeSpan.FromMinutes(1), value); }
+            get => GetLimiterCount(TimeSpan.FromMinutes(1));
+            set => SetLimiter(TimeSpan.FromMinutes(1), value);
         }
 
         public long? PerHour
         {
-            get { return GetLimiterCount(TimeSpan.FromHours(1)); }
-            set { SetLimiter(TimeSpan.FromHours(1), value); }
+            get => GetLimiterCount(TimeSpan.FromHours(1));
+            set => SetLimiter(TimeSpan.FromHours(1), value);
         }
 
         public long? PerDay
         {
-            get { return GetLimiterCount(TimeSpan.FromDays(1)); }
-            set { SetLimiter(TimeSpan.FromDays(1), value); }
+            get => GetLimiterCount(TimeSpan.FromDays(1));
+            set => SetLimiter(TimeSpan.FromDays(1), value);
         }
 
         public ICollection<Limiter> Limiters
         {
-            get { return _limits; }
-            set { _limits = new List<Limiter>(value); }
+            get => _limits;
+            set => _limits = new List<Limiter>(value);
         }
 
         public string Name { get; set; }
 
         public string[] Prefixes
         {
-            get { return _prefixes; }
+            get => _prefixes;
             set
             {
                 _prefixes = value;
@@ -135,11 +135,7 @@ namespace BrakePedal
             if (!count.HasValue)
                 return;
 
-            item = new Limiter
-            {
-                Count = count.Value,
-                Period = span
-            };
+            item = new Limiter().Limit(count.Value).LockFor(span);
 
             _limits.Add(item);
         }
