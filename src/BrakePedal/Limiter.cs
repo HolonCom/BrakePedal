@@ -4,9 +4,13 @@ namespace BrakePedal
 {
     public class Limiter
     {
-        public long Count { get; set; }
-        public TimeSpan Period { get; set; }
-        public TimeSpan? LockDuration { get; set; }
+        public Limiter()
+        {
+        }
+
+        public long Count { get; private set; }
+        public TimeSpan Period { get; private set; }
+        public TimeSpan? LockDuration { get; private set; }
 
         public Limiter Limit(long count)
         {
