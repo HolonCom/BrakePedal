@@ -3,9 +3,10 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net6;net7</TargetFrameworks>
         <PackageVersion>2.0.0</PackageVersion>
-    </PropertyGroup>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
         <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
     </ItemGroup>
 
