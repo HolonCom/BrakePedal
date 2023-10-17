@@ -135,7 +135,7 @@ namespace BrakePedal
             if (!count.HasValue)
                 return;
 
-            item = new Limiter().Limit(count.Value).LockFor(span);
+            item = new Limiter().Limit(count.Value).Over(span);
 
             _limits.Add(item);
         }
