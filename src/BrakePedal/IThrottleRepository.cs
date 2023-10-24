@@ -8,8 +8,19 @@
 
         void AddOrIncrementWithExpiration(IThrottleKey key, Limiter limiter);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="limiter"></param>
         void SetLock(IThrottleKey key, Limiter limiter);
 
+        /// <summary>
+        /// Check if a lock for a given key exists in the storage
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="limiter"></param>
+        /// <returns></returns>
         bool LockExists(IThrottleKey key, Limiter limiter);
 
         void RemoveThrottle(IThrottleKey key, Limiter limiter);
