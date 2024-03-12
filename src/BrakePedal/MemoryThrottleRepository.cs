@@ -10,7 +10,7 @@ namespace BrakePedal
         private readonly IMemoryCache _store;
 
         // Setup as a function to allow for unit testing
-        public Func<DateTime> CurrentDate = () => DateTime.UtcNow;
+        public readonly Func<DateTime> CurrentDate = () => DateTime.UtcNow;
 
         public MemoryThrottleRepository(IMemoryCache cache)
         {
